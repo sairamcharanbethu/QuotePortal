@@ -1,0 +1,68 @@
+/* Below line is used for online Google font */
+@import "http://fonts.googleapis.com/css?family=Ubuntu";
+div#first{
+    width:400px;
+    height:445px;
+    margin: 0 auto;
+    padding:10px 80px 0;
+    font-family: 'Ubuntu', sans-serif;
+    background:linear-gradient(#fff,#f2f6f9)
+}
+hr{
+    border:0;
+    border-top:1px solid #ccc;
+    margin-bottom:30px
+}
+label{
+    font-size:17px
+}
+input{
+    width:400px;
+    padding:10px;
+    margin-top:10px;
+    margin-bottom:15px;
+    border-radius:5px;
+    border:1px solid #cbcbcb;
+    box-shadow:inset 0 1px 2px rgba(0,0,0,0.18);
+    font-size:16px
+}
+textarea{
+    width:400px;
+    height:100px;
+    padding:10px;
+    margin-top:10px;
+    margin-bottom:35px;
+    border-radius:5px;
+    border:1px solid #cbcbcb;
+    box-shadow:inset 0 1px 2px rgba(0,0,0,0.18);
+    font-size:16px
+}
+input[type="button"] {
+    width: 149px!important;
+    margin-left: 90px;
+    color:black;
+    font-size:19px;
+    font-weight:700;
+    cursor: pointer;
+}
+
+input[type="button"]:hover{
+    background:linear-gradient(to bottom,#404040 5%,#585858 100%);
+    color: white;
+}
+
+input[type=submit]{
+    width: 149px!important;
+    background:linear-gradient(to bottom,#5cb85c 5%,#6dc66d 100%);
+    box-shadow:inset 0 1px 0 0 #85dd85;
+    border:1px solid #499b49;
+    color:#fff;
+    font-size:19px;
+    font-weight:700;
+    cursor:pointer;
+    text-shadow:0 1px 0 #499b49
+}
+input[type=submit]:hover{
+    background:linear-gradient(to bottom,#6dc66d 5%,#5cb85c 100%)
+}
+
