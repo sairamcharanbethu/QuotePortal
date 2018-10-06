@@ -21,7 +21,7 @@ $username=$_SESSION['username'];?>
 
 <nav id="nav-1">
     <a class="link-1" href="home.php">Home</a>
-    <a class="link-1" href="signup.php">Create User</a>
+    <a class="link-1" href="listUsers.php">Users</a>
     <a class="link-1" href="createServices.php">Add Services</a>
     <a class="link-1" href="editServices.php">Edit Services</a>
     <a class="link-1" href="createClient.php">Add Client</a>
