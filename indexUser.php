@@ -14,10 +14,9 @@ $username=$_SESSION['username'];
     <link rel="stylesheet" href="css/stylenav.css" media="all">
     <link href="https://fonts.googleapis.com/css?family=Mukta+Malar" rel="stylesheet">
     <title>Welcome-<?php echo ucwords($username)?></title>
-
 </head>
 <body>
-<a href="home.php" ><img src="img/logo.png" style="float:left"><hr>
+<a href="home.php" ><img src="img/logo.png" style="float:left;margin-left: 10px;"><hr>
 <h2 style="float: right;font-family:'Mukta Malar';color: black!important; margin-right: 5px; "><?php echo ucwords($username);?></h2>
 <h1 align="center" style="color: #0B4F7B;text-decoration:underline;font-size:35px;font-family: 'Mukta Malar', sans-serif;">Quote Management</h1>
 <nav id="nav-1">

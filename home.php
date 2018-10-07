@@ -41,7 +41,6 @@ function phone_number_format($number) {
             transition: ease-out 0.3s;
             background-color: #666;
             color: white;
-            font-weight: 500;
         }
     </style>
 </head>
