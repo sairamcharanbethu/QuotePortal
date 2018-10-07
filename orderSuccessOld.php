@@ -4,7 +4,7 @@ if(!isset($_REQUEST['id'])){
 }
 ?>
 <?php
-include 'dbConfig.php';
+include 'config/db.php';
 $quote=$_GET['id'];
 // initialize shopping cart class
 include 'Cart.php';
