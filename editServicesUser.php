@@ -14,8 +14,9 @@ include_once "index.php";?>
             width: 650px;
             margin: 0 auto;
         }
-        .page-header h2{
-            margin-top: 0;
+
+        *{
+            margin: 0;
         }
         table tr td:last-child a{
             margin-right: 15px;
