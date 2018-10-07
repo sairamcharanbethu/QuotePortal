@@ -68,11 +68,11 @@ $cart = new Cart;
         </tbody>
         <tfoot>
         <tr>
-            <td><a href="services.php" class="btn btn-warning"><i class="glyphicon glyphicon-menu-left"></i> Add more...</a></td>
+            <td style="border-radius: 15px;"><a href="services.php" class="btn btn-warning" style="border-radius: 15px;"><i class="glyphicon glyphicon-menu-left"></i> Add more...</a></td>
             <td colspan="3"></td>
             <?php if($cart->total_items() > 0){ ?>
 
-                <td style="float: right;" "><a href="checkout.php" class="btn btn-success btn-block">Proceed <i class="glyphicon glyphicon-menu-right"></i></a></td>
+                <td style="float: right; border-radius: 15px;"><a href="checkout.php" class="btn btn-success btn-block" style="border-radius: 15px;" >Proceed <i class="glyphicon glyphicon-menu-right"></i></a></td>
             <?php } ?>
         </tr>
         </tfoot>

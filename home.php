@@ -30,7 +30,7 @@ function phone_number_format($number) {
             border: none;
             border-radius: 20px;
             outline: none;
-            padding: 10px 16px;
+            padding: 5px 10px;
             color:#ffffff;
             background-color: #5175C0;
             cursor: pointer;
@@ -41,6 +41,7 @@ function phone_number_format($number) {
             transition: ease-out 0.3s;
             background-color: #666;
             color: white;
+            border: 3px solid #5175C0;
         }
     </style>
 </head>
@@ -64,7 +65,7 @@ function phone_number_format($number) {
                 <th>City</th>
                 <th>Province</th>
                 <th>Zip</th>
-                <th>Actions</th>
+                <th>Quotation</th>
             </tr>
             </thead>
 
@@ -99,7 +100,7 @@ function phone_number_format($number) {
                     <td align="center"><?php echo ucfirst($client_province);  ?></td>
                     <td align="center" style="white-space: nowrap"><?php echo strtoupper($client_zip);  ?></td>
 
-                    <td><a href="createCustomerSession.php?id=<?php echo $client_id ?>"><button class="btn">Create Quote</button></a></td>
+                    <td align="center"><a href="createCustomerSession.php?id=<?php echo $client_id ?>"><button class="btn">Create</button></a></td>
                 </tr>
 
             <?php } ?>

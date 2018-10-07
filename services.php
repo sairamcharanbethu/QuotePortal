@@ -56,7 +56,7 @@ include "index.php";
                             <td><?php echo $row["serv_name"]?></td>
                             <td><?php echo $row["description"]?></td>
                             <td>$<?php echo $row["unit"]?></td>
-                            <td><a href="cartAction.php?action=addToCart&id=<?php echo $row["serv_id"] ?>"><button class="btn btn-success">Add to cart</button></a></td>
+                            <td><a href="cartAction.php?action=addToCart&id=<?php echo $row["serv_id"] ?>"><button class="btn btn-success" style="border-radius: 15px;">Add to cart</button></a></td>
                         </tr>
                         <?php } }else{ ?>
                         <p>Services(s) not found.....</p>

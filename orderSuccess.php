@@ -170,7 +170,10 @@ function fetch_data()
             <div class="date">User: <?php echo ucfirst($_SESSION["username"])?></div>
         </div>
     </div>
-    <table id="table" border="0" cellspacing="0" cellpadding="0">
+    <button class="btn btn-primary btn-cons" onclick="window.print()">
+        <i class="fa fa-print" aria-hidden="true"></i> Print</button>
+    <table id="table" border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse;border-radius: 1em;
+  overflow: hidden;">
         <thead>
         <tr>
             <th class="no" width="20%">SERVICE</th>
@@ -199,16 +202,13 @@ function fetch_data()
         <tr>
             <td colspan="2"></td>
             <td colspan="2">GRAND TOTAL</td>
-            <td>$<?php echo number_format($totalNo,2)?> CAD</td></br>
-
-            <button class="btn btn-primary btn-cons" onclick="window.print()">
-                <i class="fa fa-print" aria-hidden="true"></i> Print</button>
+            <td>$<?php echo number_format($totalNo,2)?> CAD</td><br>
         </tr>
         </tfoot>
     </table>
 
 </main>
-<div id="thanks" align="center" style="font-size: 1em;">Thank you for your business!</div>
+<div id="thanks" align="center" style="font-size: 1em; font-weight: bold;">Thank you for your business!</div>
 
 <footer style="align-content: center">
 
