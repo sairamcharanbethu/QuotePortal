@@ -44,12 +44,25 @@ $customerAddress=$custRow['address'];
 $customerAddress2=$custRow['city'];
 $customerProvince=$custRow['province'];
 $customerzip=$custRow['zip'];
-if($cart->total_items()>0){
+
+
+
+
+if($cart->total_items()>0 && $customerProvince=='alberta' || 'british columbia' || 'manitoba' ||'northwest 
+territories' ||'nunavut' || 'quebec' || 'saskatchewan' || 'yukon'){
+
+    $subtotal=$cart->total();
+    $taxVal=$subtotal*0.05;
+    $totalNo=$subtotal+$taxVal;
+}
+
+elseif($cart->total_items()>0 && $customerProvince == 'ontario' || 'ON'){
 
     $subtotal=$cart->total();
     $taxVal=$subtotal*0.13;
     $totalNo=$subtotal+$taxVal;
 }
+
 
 
 function fetch_data()
@@ -160,9 +173,11 @@ function fetch_data()
         <div id="client">
             <div class="to">Quote created to:</div>
             <h2 class="name">Name: <?php echo ucwords($customerName)?></h2>
-            <div class="address">Address: <?php echo ucwords($customerAddress)?>, <?php echo $customerAddress2;?>, <?php echo $customerProvince;?>, <?php echo $customerzip;?></div>
+            <div class="address">Address: <?php echo ucwords($customerAddress)?>,
+                <?php echo $customerAddress2;?>, <?php echo $customerProvince;?>, <?php echo $customerzip;?></div>
             <div class="email">Email: <a href="mailto:john@example.com"><?php echo $customerEmail?></a></div>
-            <div class="email">Phone: <?php echo phone_number_format($customerPhone)?>, Work: <?php echo phone_number_format($customerWPhone); ?></div>
+            <div class="email">Phone: <?php echo phone_number_format($customerPhone)?>,
+                Work: <?php echo phone_number_format($customerWPhone); ?></div>
         </div>
         <div id="invoice">
             <h1>Quote #<?php echo $quote ?></h1>
@@ -196,7 +211,7 @@ function fetch_data()
         </tr>
         <tr>
             <td colspan="2"></td>
-            <td colspan="2">TAX 13%</td>
+            <td colspan="2">TAX </td>
             <td>$<?php echo number_format($taxVal,2)?> CAD</td>
         </tr>
         <tr>

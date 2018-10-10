@@ -24,7 +24,7 @@ include_once "index.php";
   overflow: hidden; border: 1px;">
             <th scope="col" style="width:10%">Quote #</th>
             <th scope="col" style="width: 15%">Customer ID</th>
-            <th scope="col" >Company Name</th>
+            <th scope="col" >Customer Name</th>
             <th scope="col" >Quote Price</th>
             <th scope="col" >Created Date</th>
         </tr>

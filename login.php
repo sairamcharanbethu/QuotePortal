@@ -54,7 +54,7 @@ if(isset($_POST['loginBtn'])){
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/styleLogin.css">
     <link href="https://fonts.googleapis.com/css?family=Mukta+Malar" rel="stylesheet">
     <img src="img/logo.png" style="margin-top: 10px;">

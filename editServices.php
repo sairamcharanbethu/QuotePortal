@@ -59,8 +59,8 @@ include_once "index.php";?>
                         while($row = $result->fetch()){
                             echo "<tr style=\"background-color: floralwhite;\">";
                             echo "<td>" . $row['serv_id'] . "</td>";
-                            echo "<td>" . ucwords($row['serv_name']) . "</td>";
-                            echo "<td>" . $row['description'] . "</td>";
+                            echo "<td width='25%'>" . ucwords($row['serv_name']) . "</td>";
+                            echo "<td width='40%'>" . $row['description'] . "</td>";
                             echo "<td>$" . number_format($row['unit'],2) . "</td>";
                             echo "<td>";
                             echo "<a href='readService.php?id=". $row['serv_id'] ."' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>";

@@ -147,7 +147,7 @@ VALUES (:name,:email,:a_email,:mobile,:wphone,:address,:city,:province,:zip,:cre
             <input type="text" class="form-control" name="c_name" placeholder="Client Name" required="required">
         </div>
         <div class="form-group">
-        	<input type="email" class="form-control" name="c_email" placeholder="Email" required="required">
+        	<input type="email" class="form-control" name="c_email" placeholder="Email" required="required"><br>
             <input type="email" class="form-control" name="a_email" placeholder="Alternate Email" >
         </div>
          <div class="form-group">
