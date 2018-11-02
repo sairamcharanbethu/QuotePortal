@@ -44,7 +44,7 @@ include_once "index.php";
             $created=$row[4];
             ?>
             <?php
-            $sql = "SELECT * FROM customers WHERE id = :id";
+            $sql = "SELECT * FROM users WHERE id = :id";
 
             if($stmt = $db->prepare($sql)){
             // Bind variables to the prepared statement as parameters
@@ -61,14 +61,14 @@ include_once "index.php";
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
                 // Retrieve individual field value
-                $name = $row["name"];
+                $name = $row["username"];
                }}}
 
             ?>
             <tr style="background-color: floralwhite;">
                 <!--here showing results in the table -->
                 <td align="center"><?php echo $order_id;  ?></td>
-                <td align="center"><?php echo $customer_id;  ?></td>
+                <td align="center"><?php echo $customerid;  ?></td>
                 <td align="center"><?php echo $name;  ?></td>
                 <td align="center">$<?php echo number_format($total_price,2);  ?></td>
                 <td align="center"><?php echo $created;  ?></td>

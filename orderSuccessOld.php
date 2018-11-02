@@ -17,7 +17,6 @@ if($cart->total_items() <= 0){
     header("Location: home.php");
 }
 
-
 // get customer details by session customer ID
 $query = $db->query("SELECT * FROM customers WHERE id = ".$_SESSION['sessCustomerID']);
 $custRow = $query->fetch_assoc();

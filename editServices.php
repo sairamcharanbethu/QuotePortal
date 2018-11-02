@@ -11,7 +11,7 @@ include_once "index.php";?>
     <script src="js/bootstrap.min.js"></script>
     <style type="text/css">
         .wrapper{
-            width: 100%;
+            width: 65%;
             margin: 0 auto;
         }
         .page-header h2{
