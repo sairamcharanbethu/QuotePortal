@@ -49,7 +49,7 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
 
             if($insertOrderItems){
 
-                header("Location: orderSuccess.php?id=$orderID");
+                header("Location: orderSuccess1.php?id=$orderID");
 
             }else{
                 header("Location: checkout.php");

@@ -68,10 +68,10 @@ include_once "index.php";
             <tr style="background-color: floralwhite;">
                 <!--here showing results in the table -->
                 <td align="center"><?php echo $order_id;  ?></td>
-                <td align="center"><?php echo $customerid;  ?></td>
+                <td align="center"><?php echo $customer_id;  ?></td>
                 <td align="center"><?php echo $name;  ?></td>
                 <td align="center">$<?php echo number_format($total_price,2);  ?></td>
-                <td align="center"><?php echo $created;  ?></td>
+                <td align="center"><?php echo date('Y-m-d  h:i A',strtotime($created));  ?></td>
             </tr>
         <?php } ?>
 

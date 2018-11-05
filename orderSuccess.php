@@ -4,11 +4,14 @@ if(!isset($_REQUEST['id'])){
 }
 ?>
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 include 'config/db.php';
 $quote=$_GET['id'];
 // initialize shopping cart class
 include 'Cart.php';
-
+$message = '';
+$output='';
 $cart = new Cart;
 $totalNo=0;
 $taxVal=0;
@@ -64,13 +67,10 @@ elseif($cart->total_items()>0 && $customerProvince == 'ontario' || 'ON'){
 }
 
 
-
 function fetch_data()
 {
     $cart = new Cart;
     $output = '';
-
-
     if ($cart->total_items() > 0) {
 //get cart items from session
         $cartItems = $cart->contents();
@@ -94,13 +94,120 @@ function fetch_data()
         </tr>';
 
         }
-
-        $cart->destroy();
-
     }
 
     return $output;
 
+}
+$output=fetch_data();
+$data=$output;
+if(isset($_POST["action"]))
+{
+    if($cart->total_items() <= 0){
+       header("Location: email.php");
+    }
+
+    $files = glob("./pdf/include/*.php");
+    include('pdf.php');
+    $file_name = $customerName.' '.$quote.'.pdf';
+    $html_code = '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">';
+    $html_code .= '<header class="clearfix">
+    <div id="logo">
+        <img src="img/logo.png">
+    </div>
+    <div id="company">
+        <h2 class="name">SSCI</h2>
+        <div>3105 Dundas St W Suite 202, Mississauga , Ontario,L5L 3R8</div>
+        <div>(602) 519-0450</div>
+        <div><a href="mailto:company@example.com">info@sscinc.ca</a></div>
+    </div>
+</header>
+    <h3>Quote to: '.$custRow['name'].'</h3>  
+    <p align="left">Email: '.$custRow['email'].'</p>
+    <p align="left">Contact No: '.$custRow['phone'].'</p>
+    <p align="left">Address: '.$custRow['address'].' </p>
+        
+        <h4 align="right" style="display: inline-block;">Quote# '.$quote.'</h4> 
+        <h4 align="right" style="display: inline-block;">Quote by: '.$_SESSION['username'].'</h4>
+        <h4 align="right" style="display: inline-block;">Date:'.date('Y-m-d').'</h4>
+        <h3 align="center"><u>Quote Estimate</u></h3><br /><br /> 
+       
+      <table class="table" border="0.05" cellspacing="0" cellpadding="5">  
+           <tr>  
+                
+                <th align="center" width="20%" style="font-weight: bold">Service Name</th> 
+                <th align="center" width="20%" style="font-weight: bold">Service Description</th>  
+                <th align="center" width="20%" style="font-weight: bold">Price</th>  
+                <th align="center" width="20%" style="font-weight: bold">Quantity</th>  
+                <th align="center" width="20%" style="font-weight: bold">Subtotal</th>  
+           </tr> ';
+
+    $html_code .= $data;
+    $html_code .='<tfoot style="display: table-row-group">
+        <tr>
+            <td colspan="2"></td>
+            <td colspan="2">SUBTOTAL</td>
+            <td>$'.number_format($subtotal,2).'CAD</td>
+        </tr>
+        <tr>
+            <td colspan="2"></td>
+            <td colspan="2">TAX </td>
+            <td>$'.number_format($taxVal,2).' CAD</td>
+        </tr>
+        <tr>
+            <td colspan="2"></td>
+            <td colspan="2">GRAND TOTAL</td>
+            <td>$ '.number_format($totalNo,2).'CAD</td><br>
+        </tr>
+        </tfoot>';
+    $pdf = new Pdf();
+    $pdf->loadHtml($html_code);
+    $pdf->render();
+    $file=$pdf->output();
+    file_put_contents($file_name, $file);
+
+
+    require 'PHPMailer/src/Exception.php';
+    require 'PHPMailer/src/PHPMailer.php';
+    require 'PHPMailer/src/SMTP.php';
+
+
+    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+    try {
+        //Server settings
+//        $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+        $mail->isSMTP();                                      // Set mailer to use SMTP
+        $mail->Host = 'smtp.gmail.com';  //Sets the SMTP hosts of your Email hosting, this for Godaddy
+        $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = '465';        //Sets the default SMTP server port
+        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+        $mail->Username = 'sairamcharanbethu18@gmail.com';     //Sets SMTP username
+        $mail->Password = 'Lassi626$';     //Sets SMTP password
+        //Recipients
+        $mail->setFrom('sairamcharanbethu18@gmail.com', 'SSCI');
+        $mail->addAddress($custRow['email'],$custRow['name']);     // Add a recipient
+//        $mail->addAddress('ellen@example.com');               // Name is optional
+//        $mail->addReplyTo('info@example.com', 'Information');
+//        $mail->addCC('cc@example.com');
+//        $mail->addBCC('bcc@example.com');
+
+        //Attachments
+        $mail->addAttachment($file_name);         // Add attachments
+
+        //Content
+        $mail->isHTML(true);                                  // Set email format to HTML
+        $mail->Subject =  'Quote Generated '.$quote.' Successfully';
+        $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+        $mail->send();
+        $message='E-mail has been sent';
+
+    } catch (Exception $e) {
+        $message= 'Message could not be sent. Mailer Error:';
+    }
+    $cart->destroy();
+    unlink($file_name);
 }
 ?>
 
@@ -185,8 +292,13 @@ function fetch_data()
             <div class="date">User: <?php echo ucfirst($_SESSION["username"])?></div>
         </div>
     </div>
+    <form method="post">
     <button class="btn btn-primary btn-cons" onclick="window.print()">
-        <i class="fa fa-print" aria-hidden="true"></i> Print</button>
+        <i class="fa fa-print" aria-hidden="true"></i> Print</button>&nbsp;
+    <a href="back.php"><button class="btn" type="button">Go Home</button></a>&nbsp;
+
+        <input type="submit" name="action" class="btn btn-danger" value="PDF Send" /><?php echo $message; ?>
+    </form>
     <table id="table" border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse;border-radius: 1em;
   overflow: hidden;">
         <thead>
@@ -200,7 +312,7 @@ function fetch_data()
         </thead>
         <tbody>
         <?php
-        echo fetch_data();
+        echo $data;
         ?>
         </tbody>
         <tfoot style="display: table-row-group">

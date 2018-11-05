@@ -100,7 +100,7 @@ function phone_number_format($number) {
     </div>
     <div class="footBtn">
         <a href="services.php" class="btn btn-warning" style="border-radius: 15px;"><i class="glyphicon glyphicon-menu-left"></i> Add more services..</a>
-        <a href="cartAction.php?action=placeOrder" class="btn btn-success orderBtn" target="_blank" onclick="document.location.href='home.php'" style="border-radius: 15px;">Generate Quote<i class="glyphicon glyphicon-menu-right"></i></a>
+        <a href="cartAction.php?action=placeOrder" class="btn btn-success orderBtn" style="border-radius: 15px;">Generate Quote<i class="glyphicon glyphicon-menu-right"></i></a>
     </div>
 </div>
 </body>

@@ -1,7 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: saira
- * Date: 28-Oct-2018
- * Time: 11:28 AM
- */
+echo "<h1>Email already sent</h1><br>";
+echo "Redirecting to home..";
+header( "refresh:2;url=home.php" );
