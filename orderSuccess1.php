@@ -128,14 +128,13 @@ if(isset($_POST["action"]))
     $content .= '<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">';
     $content .= '
 </br></br>
-   <img src="img/logo.png" align="center">
+   <img src="img/logo.png" align="right">
     <div id="company" style="float: right">
-        <h2 class="name">SSCI</h2>
-        <div>3105 Dundas St W Suite 202, Mississauga , Ontario,L5L 3R8</div>
-        <div>(602) 519-0450</div>
+        <div>3105 Dundas St W Suite 202, Mississauga, Ontario, L5L 3R8</div>
+        <div>Contact Us:(602) 519-0450</div>
         <div><a href="mailto:company@example.com">info@sscinc.ca</a></div>
     </div>
-    <h3>Quote to: '.$custRow['name'].'</h3>  
+    <h4>Quote to: '.$custRow['name'].'</h4>  
     <p align="left">Email: '.$custRow['email'].'</p>
     <p align="left">Contact No: '.$custRow['phone'].'</p>
     <p align="left">Address: '.$custRow['address'].' </p>
